@@ -4,6 +4,7 @@
 class Animal {
 public:
     virtual void speak() const = 0; // pure virtual function
+    virtual ~Animal() = default;    // a destructor is required
 };
 
 // Subclass: Dog
