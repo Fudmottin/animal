@@ -23,15 +23,16 @@ public:
     }
 };
 
-class Elephant {
+class Elephant : public Animal {
 public:
-    void speak() const {
+    void speak() const override {
         std::cout << "I'm gonna crush you!" << std::endl;
     }
 };
 
 template<typename T>
 void whatDoesTheAnimalSay(const T& a) {
+    static_assert(std::is_base_of<Animal, T>::value, "T must inherit from Animal");
     a.speak();
 }
 
