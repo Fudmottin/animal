@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 
 // Base class
 class Animal {
@@ -29,12 +30,12 @@ void whatDoesTheAnimalSay(const Animal& a) {
 
 // main function
 int main() {
-    Dog dog;
-    Cat cat;
+    std::unique_ptr<Animal> dog = std::make_unique<Dog>();
+    std::unique_ptr<Animal> cat = std::make_unique<Cat>();
 
-    whatDoesTheAnimalSay(dog); // outputs: bark
-    whatDoesTheAnimalSay(cat); // outputs: meow
-
+    whatDoesTheAnimalSay(*dog); // outputs: bark
+    whatDoesTheAnimalSay(*cat); // outputs: meow
+    
     std::cout << "Sizeof(Dog) is " << sizeof(Dog) << std::endl;
     std::cout << "Sizeof(void*) is " << sizeof(void*) << std::endl;
 
